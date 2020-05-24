@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+char arr[200];
+int main()
+{
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    map<char, vector<int> >mp;
+    for(int i=0; i<n; i++){
+        mp[s[i]].push_back(i+1);
+    }
+    int m;
+    cin>>m;
+    for(int i=0; i<m; i++){
+        int ans =0;
+        string str;
+        cin>>str;
+        map<char, int>pos;
+        for(int j=0; j<str.size(); j++){
+            int a = pos[str[j]];
+            pos[str[j]]++;
+            ans = max(ans,mp[str[j]][a]);
+        }
+        cout<<ans<<endl;
+    }
+}
